@@ -49,3 +49,21 @@ def divide_numbers():
     except (TypeError, ValueError):
         return jsonify({"error": "Lütfen geçerli sayılar girin."}), 400
 
+    # 404 Hatası için Özel Yanıt
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({"error": "Böyle bir uç nokta bulunamadı."}), 404
+
+# 500 Hatası için Özel Yanıt
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({"error": "Sunucu hatası oluştu."}), 500
+#1024 altındaki portları çağırmadığı için Kayseri plakası olan 38'i iki kere yazdım
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=3838, debug=True)
+
+    #http://127.0.0.1:3838/subtract?a=9&b=7 adresinin ekran çıktısı   "Fark": 2
+    #http://127.0.0.1:3838/sum?a=9&b=7 adresinin ekran çıktısı   "Toplam": 16
+    #POST olan kısımlar Postman aracılığıyla çalışmaktadır
+
+
