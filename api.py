@@ -23,3 +23,29 @@ def subtract_numbers():
     else:
         return jsonify({"error": "Lütfen iki geçerli sayı girin."}), 400
 
+    # POST endpoint: İki sayının çarpılması
+@app.route('/multiply', methods=['POST'])
+def multiply_numbers():
+    data = request.get_json()
+    try:
+        num1 = int(data.get('num1'))
+        num2 = int(data.get('num2'))
+        result = num1 * num2
+        return jsonify({"Çarpım": result}), 200
+    except (TypeError, ValueError):
+        return jsonify({"error": "Lütfen geçerli sayılar girin."}), 400
+
+# POST endpoint: İki sayının bölünmesi
+@app.route('/divide', methods=['POST'])
+def divide_numbers():
+    data = request.get_json()
+    try:
+        num1 = int(data.get('num1'))
+        num2 = int(data.get('num2'))
+        if num2 == 0:
+            return jsonify({"error": "Bir sayı sıfıra bölünemez."}), 400
+        result = num1 / num2
+        return jsonify({"Bölüm": result}), 200
+    except (TypeError, ValueError):
+        return jsonify({"error": "Lütfen geçerli sayılar girin."}), 400
+
