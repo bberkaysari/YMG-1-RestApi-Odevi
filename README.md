@@ -12,6 +12,7 @@ Bu proje, bir RESTful API uygulamasını geliştirmek ve bir **Linux servisi** o
  ## Çalıştırma Komutları
 ```bash
  curl "http://127.0.0.1:3838/sum?a=9&b=7"
+ curl "http://127.0.0.1:3838/subtract?a=9&b=7"
  curl -X POST -H "Content-Type: application/json" -d '{"num1": 6, "num2": 3}' http://127.0.0.1:3838/multiply
  curl -X POST -H "Content-Type: application/json" -d '{"num1": 10, "num2": 2}' http://127.0.0.1:3838/divide
 ```
